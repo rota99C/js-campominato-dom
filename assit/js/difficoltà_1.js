@@ -62,10 +62,16 @@ document.querySelector(".btn3").addEventListener("click", function () {
 let cella = document.querySelector(".cella")
 
 cella.addEventListener("click", function () {
-    cella.classList.add("azzurro");
+    this.classList.add("azzurro");
 })
 
-
+/* In seguito l'utente clicca su ogni cella:
+se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina,
+altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+La partita termina quando
+il giocatore clicca su una bomba
+o raggiunge il numero massimo possibile di numeri consentiti.
+Al termine della partita il software deve scoprire tutte le bombe e comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito. */
 
 //collego punteggio
 const punteggio = document.querySelector(".punteggio")
