@@ -10,6 +10,12 @@ function creaGriglia(numero) {
         const elGriglia = document.createElement('div')
         elGriglia.className = ('cella')
         container.appendChild(elGriglia)
+
+        let numGriglia = document.createElement('p')
+        elGriglia.appendChild(numGriglia)
+        numGriglia.innerHTML = index + 1
+
+
         elGriglia.addEventListener("click", function () {
             elGriglia.classList.add("azzurro");
         });
@@ -38,6 +44,6 @@ document.querySelector(".btn3").addEventListener("click", function () {
 const numerobombe = 16
 
 //collego punteggio
-const punteggio = document.querySelector(.punteggio)
+const punteggio = document.querySelector(".punteggio")
 
 
