@@ -12,13 +12,12 @@ function creaGriglia(numero) {
         elGriglia.className = ('cella')
         container.appendChild(elGriglia)
 
+        // creo la numerazione
         let numGriglia = document.createElement('p')
         elGriglia.appendChild(numGriglia)
         numGriglia.innerHTML = index + 1
 
-        /* elGriglia.addEventListener("click", function () {
-            elGriglia.classList.add("azzurro");
-        }); */
+        // elGriglia.addEventListener("click", bombClick);
     }
 }
 
@@ -35,10 +34,34 @@ function bombGenerator(numero) {
 }
 
 document.querySelector(".btn1").addEventListener("click", function () {
-    numQuadrati = 100;
+
+    numQuadrati = 100
+
     creaGriglia(numQuadrati)
     let bombPosition = bombGenerator(numQuadrati)
-    // console.log(bombPosition);
+    console.log(bombPosition);
+    //console.log(typeof bombPosition);
+
+    let allCells = document.getElementsByClassName("cella")
+    console.log(allCells);
+    for (let index = 0; index < allCells.length; index++) {
+        const singleCell = allCells[index];
+
+        singleCell.addEventListener("click", function () {
+            let numberCell = this.innerText;
+            // console.log(numberCell);
+            // console.log(typeof numberCell);
+            if (bombPosition.includes(Number(numberCell))) {
+                // console.log("Bomb detected");
+                // la cella si colora di rosso
+                singleCell.style.background = "red";
+
+            } else {
+                // la cella si colora di azzurro
+                singleCell.style.background = "lightblue";
+            }
+        })
+    }
 
 })
 
@@ -57,23 +80,5 @@ document.querySelector(".btn3").addEventListener("click", function () {
     // console.log(bombPosition);
 })
 
+
 // creo la funzione per la quale le celle si colorano di azzurro o rosso al click
-
-let cella = document.querySelector(".cella")
-
-cella.addEventListener("click", function () {
-    this.classList.add("azzurro");
-})
-
-/* In seguito l'utente clicca su ogni cella:
-se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina,
-altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-La partita termina quando
-il giocatore clicca su una bomba
-o raggiunge il numero massimo possibile di numeri consentiti.
-Al termine della partita il software deve scoprire tutte le bombe e comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito. */
-
-//collego punteggio
-const punteggio = document.querySelector(".punteggio")
-
-
